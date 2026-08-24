@@ -286,3 +286,37 @@ footer {
     }
 
 }
+
+
+/* ===============================
+   MEMBERS PAGE
+   =============================== */
+
+.members-list {
+
+    max-width: 900px;
+    margin: auto;
+
+}
+
+.members-list li {
+
+    background:#181818;
+
+    margin:10px 0;
+
+    padding:12px 20px;
+
+    border-radius:10px;
+
+    border:1px solid #333;
+
+    text-align:left;
+
+}
+
+.members-list li:hover {
+
+    background:#222;
+
+}
