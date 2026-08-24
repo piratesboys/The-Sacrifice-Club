@@ -1,4 +1,3 @@
-```javascript
 // =====================================
 // THE SACRIFICE CLUB - JAVASCRIPT
 // =====================================
@@ -156,4 +155,3 @@ function randomChallenge() {
     }
 
 }
-```
