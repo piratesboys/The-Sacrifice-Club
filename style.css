@@ -407,3 +407,112 @@ footer {
     margin-bottom:35px;
 
 }
+
+.tournament-card {
+
+    margin-bottom: 25px;
+
+}
+
+
+.tournament-card h3 {
+
+    color:#d4af37;
+
+    font-size:25px;
+
+    margin-bottom:15px;
+
+}
+
+
+.tournament-card p {
+
+    margin:8px 0;
+
+}
+
+
+.loading {
+
+    font-size:20px;
+
+    color:#aaa;
+
+}
+
+/* =====================================
+   TOURNAMENTS
+===================================== */
+
+.tournament-card {
+
+    margin-bottom:25px;
+
+}
+
+
+.tournament-card h3 {
+
+    color:#d4af37;
+
+    font-size:25px;
+
+    margin-bottom:15px;
+
+}
+
+
+.tournament-card p {
+
+    margin:8px 0;
+
+}
+
+
+.tournament-status {
+
+    font-weight:bold;
+
+}
+
+
+.status-current {
+
+    color:#4caf50;
+
+}
+
+
+.status-upcoming {
+
+    color:#4da6ff;
+
+}
+
+
+.status-finished {
+
+    color:#d4af37;
+
+}
+
+
+section > h3 {
+
+    color:#aaa;
+
+    font-size:24px;
+
+    margin-top:30px;
+
+    margin-bottom:20px;
+
+}
+
+
+.empty-card {
+
+    opacity:0.8;
+
+}
