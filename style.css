@@ -320,3 +320,90 @@ footer {
     background:#222;
 
 }
+
+/* ===============================
+   MEMBERS GRID
+   =============================== */
+
+.member-grid {
+
+    display:grid;
+
+    grid-template-columns:
+    repeat(auto-fit, minmax(220px, 1fr));
+
+    gap:20px;
+
+    max-width:1100px;
+
+    margin:auto;
+
+}
+
+
+.member-card {
+
+    background:#181818;
+
+    border:1px solid #333;
+
+    border-radius:15px;
+
+    padding:22px;
+
+    text-align:center;
+
+    transition:0.2s;
+
+}
+
+
+.member-card:hover {
+
+    background:#222;
+
+    transform:translateY(-4px);
+
+    border-color:#d4af37;
+
+}
+
+
+.member-card h3 {
+
+    color:#d4af37;
+
+    font-size:20px;
+
+    margin-bottom:10px;
+
+}
+
+
+.member-card a {
+
+    color:#aaa;
+
+    text-decoration:none;
+
+    font-weight:bold;
+
+}
+
+
+.member-card a:hover {
+
+    color:#d4af37;
+
+}
+
+
+.member-count {
+
+    color:#aaa;
+
+    font-size:20px;
+
+    margin-bottom:35px;
+
+}
