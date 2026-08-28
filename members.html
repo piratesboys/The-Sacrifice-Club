@@ -10,6 +10,7 @@
 
 <body>
 
+```
 <main class="container">
 
     <h1>♟️ CLUB MEMBERS</h1>
@@ -33,8 +34,11 @@
     <footer>
         <p>🔥 LONG LIVE ATTACKING CHESS! ♟️</p>
         <p>The Sacrifice Club - Official Lichess Team</p>
+
         <p>
-            <a href="https://lichess.org/team/the-sacrifice-club" target="_blank">
+            <a href="https://lichess.org/team/the-sacrifice-club"
+               target="_blank"
+               rel="noopener noreferrer">
                 Visit our Lichess Team
             </a>
         </p>
@@ -56,31 +60,51 @@
                 throw new Error(`HTTP ${response.status}`);
             }
 
-            const members = await response.json();
+            const data = await response.json();
 
             membersContainer.innerHTML = "";
 
-            members.forEach(member => {
-                if (!member.username) return;
+            /*
+             * Lichess peut retourner les utilisateurs sous
+             * différentes formes selon l'endpoint.
+             */
+            const members = Array.isArray(data)
+                ? data
+                : data.users || [];
 
-                const link = document.createElement("a");
-                link.href = `https://lichess.org/@/${encodeURIComponent(member.username)}`;
-                link.target = "_blank";
-                link.rel = "noopener noreferrer";
-                link.textContent = `♟️ ${member.username}`;
+            members.forEach(member => {
+
+                const username =
+                    member.username ||
+                    member.name ||
+                    member.user?.name;
+
+                if (!username) return;
 
                 const div = document.createElement("div");
-                div.appendChild(link);
 
+                const link = document.createElement("a");
+
+                link.href =
+                    `https://lichess.org/@/${encodeURIComponent(username)}`;
+
+                link.target = "_blank";
+                link.rel = "noopener noreferrer";
+
+                link.textContent = `♟️ ${username}`;
+
+                div.appendChild(link);
                 membersContainer.appendChild(div);
             });
 
             if (membersContainer.children.length === 0) {
-                membersContainer.textContent = "No members found.";
+                membersContainer.textContent =
+                    "No members found.";
             }
 
         } catch (error) {
-            console.error("Unable to load members:", error);
+            console.error("Lichess members error:", error);
+
             membersContainer.textContent =
                 "🔴 Unable to update members";
         }
@@ -88,6 +112,7 @@
 
     loadMembers();
 </script>
+```
 
 </body>
 </html>
