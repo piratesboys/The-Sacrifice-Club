@@ -1,3 +1,4 @@
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -13,29 +14,41 @@
 
     <main class="members-page">
 
-        <h1>♟️ CLUB MEMBERS</h1>
+        <header class="members-header">
 
-        <p>
-            The players who make The Sacrifice Club stronger every day.
-        </p>
+            <h1>♟️ CLUB MEMBERS</h1>
 
-        <p>
-            <a href="index.html">⬅ Back to Home</a>
-        </p>
+            <p>
+                The players who make The Sacrifice Club stronger every day.
+            </p>
 
-        <section>
+            <a class="button" href="index.html">
+                ⬅ Back to Home
+            </a>
+
+        </header>
+
+
+        <section class="members-section">
+
             <h2>♟️ Members</h2>
 
             <div id="members">
-                <p>Loading members...</p>
+                <p class="loading">Loading members...</p>
             </div>
+
         </section>
 
-        <section>
+
+        <section class="more-members">
+
             <h2>🔥 More members coming soon!</h2>
+
         </section>
+
 
         <footer>
+
             <h2>🔥 LONG LIVE ATTACKING CHESS! ♟️</h2>
 
             <p>
@@ -51,9 +64,11 @@
                     Visit our Lichess Team
                 </a>
             </p>
+
         </footer>
 
     </main>
+
 
     <script>
         async function loadMembers() {
@@ -85,8 +100,10 @@
                 });
 
                 if (members.length === 0) {
+
                     container.innerHTML =
                         "<p>No members found.</p>";
+
                     return;
                 }
 
@@ -95,6 +112,7 @@
                 members.forEach(function(member) {
 
                     const card = document.createElement("div");
+
                     card.className = "member-card";
 
                     const username =
@@ -103,7 +121,7 @@
                     const link = document.createElement("a");
 
                     link.href =
-                        "https://lichess.org/@/" +
+                        "https://lichess.org/@" +
                         encodeURIComponent(username);
 
                     link.target = "_blank";
@@ -114,6 +132,7 @@
                     card.appendChild(link);
 
                     container.appendChild(card);
+
                 });
 
             } catch (error) {
@@ -133,3 +152,4 @@
 
 </body>
 </html>
+```
