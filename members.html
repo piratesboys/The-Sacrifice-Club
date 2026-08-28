@@ -1,252 +1,122 @@
+```html
 <!DOCTYPE html>
-
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-```
-<title>The Sacrifice Club - Members ♟️</title>
+    <title>Club Members ♟️</title>
 
-<link rel="stylesheet" href="style.css">
-```
-
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-<header>
+    <main class="members-page">
 
-```
-<h1>👥 CLUB MEMBERS ♟️</h1>
+        <h1>♟️ CLUB MEMBERS</h1>
 
-<p>
-    The players who make The Sacrifice Club stronger every day.
-</p>
+        <p>
+            The players who make The Sacrifice Club stronger every day.
+        </p>
 
-<a class="button" href="index.html">
-    ⬅ Back to Home
-</a>
-```
+        <p>
+            <a href="index.html">⬅ Back to Home</a>
+        </p>
 
-</header>
+        <section>
+            <h2>♟️ Members</h2>
 
-<section>
+            <div id="members">
+                <p>Loading members...</p>
+            </div>
+        </section>
 
-```
-<h2>
-    ♟️ <span id="member-count">...</span> Members
-</h2>
+        <section>
+            <h2>🔥 More members coming soon!</h2>
+        </section>
 
-<p id="status">
-    🔄 Loading members...
-</p>
+        <footer>
+            <h2>🔥 LONG LIVE ATTACKING CHESS! ♟️</h2>
+            <p>The Sacrifice Club - Official Lichess Team</p>
 
-<div id="members">
-    <!-- Les membres seront ajoutés automatiquement ici -->
-</div>
+            <p>
+                <a
+                    href="https://lichess.org/team/the-sacrifice-club"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
+                    Visit our Lichess Team
+                </a>
+            </p>
+        </footer>
 
-<h2>🔥 More members coming soon!</h2>
-```
+    </main>
 
-</section>
+    <script>
+        async function loadMembers() {
 
-<footer>
+            const container = document.getElementById("members");
 
-```
-<h2>
-    🔥 LONG LIVE ATTACKING CHESS! ♟️
-</h2>
+            try {
+                const response = await fetch("/api/members");
 
-<p>
-    The Sacrifice Club - Official Lichess Team
-</p>
-```
+                if (!response.ok) {
+                    throw new Error("Server error");
+                }
 
-</footer>
+                const data = await response.json();
 
-<script>
+                if (!data.success) {
+                    throw new Error(data.error || "Unable to load members");
+                }
 
-const TEAM_ID = "TON_ID_EQUIPE";
+                if (!data.members || data.members.length === 0) {
+                    container.innerHTML =
+                        "<p>No members found.</p>";
+                    return;
+                }
 
-const API_URL = `/api/members`;
+                container.innerHTML = "";
 
-let previousMembers = [];
+                data.members.forEach(function(member) {
 
+                    const card = document.createElement("div");
 
-/*
-    Création d'une carte pour un membre
-*/
-function createMemberCard(member) {
+                    card.className = "member-card";
 
-    const card = document.createElement("div");
-    card.className = "card";
+                    const username =
+                        member.username || member.name || "Unknown player";
 
-    const title = document.createElement("h3");
+                    card.innerHTML =
+                        '<h3>♟️ ' +
+                        escapeHTML(username) +
+                        "</h3>";
 
-    // BOT
-    if (member.title === "BOT") {
-        title.textContent = "🤖 " + member.username;
-    }
+                    container.appendChild(card);
+                });
 
-    // Joueur titré
-    else if (member.title) {
-        title.textContent = "🏆 " + member.username;
-    }
+            } catch (error) {
 
-    // Joueur normal
-    else {
-        title.textContent = "♟️ " + member.username;
-    }
+                console.error(error);
 
-    card.appendChild(title);
-
-
-    // Informations supplémentaires
-    if (member.title === "BOT") {
-
-        const info = document.createElement("p");
-        info.textContent = "BOT";
-        card.appendChild(info);
-
-    }
-
-    else if (member.title) {
-
-        const info = document.createElement("p");
-        info.textContent = member.title + " Player";
-        card.appendChild(info);
-
-    }
-
-
-    // Bouton profil
-    const button = document.createElement("a");
-
-    button.className = "button";
-
-    button.href =
-        "https://lichess.org/@" +
-        encodeURIComponent(member.username);
-
-    button.target = "_blank";
-    button.rel = "noopener noreferrer";
-
-    button.textContent = "Open Profile";
-
-    card.appendChild(button);
-
-    return card;
-}
-
-
-/*
-    Affiche les membres
-*/
-function displayMembers(members) {
-
-    const container = document.getElementById("members");
-
-    container.innerHTML = "";
-
-    members.forEach(member => {
-
-        const card = createMemberCard(member);
-
-        container.appendChild(card);
-
-    });
-
-    document.getElementById("member-count").textContent =
-        members.length;
-
-}
-
-
-/*
-    Vérifie si la liste a changé
-*/
-function membersChanged(newMembers) {
-
-    if (previousMembers.length !== newMembers.length) {
-        return true;
-    }
-
-    const oldList = previousMembers
-        .map(member => member.username)
-        .sort();
-
-    const newList = newMembers
-        .map(member => member.username)
-        .sort();
-
-    return JSON.stringify(oldList) !== JSON.stringify(newList);
-}
-
-
-/*
-    Récupère les membres
-*/
-async function loadMembers() {
-
-    try {
-
-        const response = await fetch(API_URL, {
-            cache: "no-store"
-        });
-
-        if (!response.ok) {
-            throw new Error("API error");
+                container.innerHTML =
+                    "<p>🔴 Unable to update members</p>";
+            }
         }
 
-        const members = await response.json();
+        function escapeHTML(text) {
 
+            const div = document.createElement("div");
 
-        // On ne reconstruit la liste que si elle a changé
-        if (membersChanged(members)) {
+            div.textContent = text;
 
-            displayMembers(members);
-
-            previousMembers = members;
-
+            return div.innerHTML;
         }
 
-
-        const now = new Date();
-
-        document.getElementById("status").textContent =
-            "🟢 Updated at " +
-            now.toLocaleTimeString();
-
-
-    }
-
-    catch (error) {
-
-        console.error(error);
-
-        document.getElementById("status").textContent =
-            "🔴 Unable to update members";
-
-    }
-
-}
-
-
-/*
-    Première récupération
-*/
-loadMembers();
-
-
-/*
-    Vérification toutes les 30 secondes
-*/
-setInterval(loadMembers, 30000);
-
-</script>
+        loadMembers();
+    </script>
 
 </body>
-
 </html>
+```
