@@ -532,3 +532,62 @@ section > h3 {
     margin-top:0;
 
 }
+
+/* Members page spacing */
+
+h1 {
+margin-bottom: 20px;
+}
+
+h2 {
+margin-top: 35px;
+margin-bottom: 20px;
+}
+
+p {
+margin-bottom: 18px;
+}
+
+#members {
+margin-top: 20px;
+margin-bottom: 35px;
+}
+
+#members div {
+margin-bottom: 10px;
+}
+
+footer {
+margin-top: 45px;
+}
+
+/* ===============================
+   MEMBERS PAGE - SPACING
+================================= */
+
+.members-page {
+    padding-top: 60px;
+    padding-bottom: 60px;
+}
+
+.members-page h1 {
+    margin-bottom: 25px;
+}
+
+.members-page > p {
+    margin-bottom: 50px;
+}
+
+.members-page h2 {
+    margin-top: 0;
+    margin-bottom: 30px;
+}
+
+#members {
+    margin-top: 0;
+    margin-bottom: 50px;
+}
+
+.members-page footer {
+    margin-top: 60px;
+}
