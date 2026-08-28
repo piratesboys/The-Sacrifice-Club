@@ -70,23 +70,34 @@
 
 
     <script>
+
+        const MEMBERS_API =
+            "https://lichess.org/api/team/the-sacrifice-club/users";
+
         async function loadMembers() {
 
-            const container = document.getElementById("members");
+            const container =
+                document.getElementById("members");
 
             try {
 
                 const response = await fetch(
-                    "https://lichess.org/api/team/the-sacrifice-club/users"
+                    MEMBERS_API,
+                    {
+                        method: "GET",
+                        cache: "no-store"
+                    }
                 );
 
                 if (!response.ok) {
                     throw new Error(
-                        "Lichess returned HTTP " + response.status
+                        "Lichess returned HTTP " +
+                        response.status
                     );
                 }
 
-                const text = await response.text();
+                const text =
+                    await response.text();
 
                 const lines = text
                     .split("\n")
@@ -94,10 +105,14 @@
                         return line.trim() !== "";
                     });
 
-                const members = lines.map(function(line) {
-                    return JSON.parse(line);
-                });
+                const members =
+                    lines.map(function(line) {
+                        return JSON.parse(line);
+                    });
 
+                /*
+                 * Si aucun membre n'est trouvé
+                 */
                 if (members.length === 0) {
 
                     container.innerHTML =
@@ -106,33 +121,51 @@
                     return;
                 }
 
+                /*
+                 * Création de la liste
+                 */
                 container.innerHTML = "";
 
                 members.forEach(function(member) {
 
-                    const card = document.createElement("div");
+                    const card =
+                        document.createElement("div");
 
-                    card.className = "member-card";
+                    card.className =
+                        "member-card";
+
 
                     const username =
-                        member.username || "Unknown player";
+                        member.username ||
+                        "Unknown player";
 
-                    const link = document.createElement("a");
+
+                    const link =
+                        document.createElement("a");
 
                     link.href =
                         "https://lichess.org/@" +
                         encodeURIComponent(username);
 
                     link.target = "_blank";
-                    link.rel = "noopener noreferrer";
 
-                    link.textContent = "♟️ " + username;
+                    link.rel =
+                        "noopener noreferrer";
+
+                    link.textContent =
+                        "♟️ " + username;
+
 
                     card.appendChild(link);
 
                     container.appendChild(card);
 
                 });
+
+                console.log(
+                    "Members updated:",
+                    members.length
+                );
 
             } catch (error) {
 
@@ -146,7 +179,23 @@
             }
         }
 
+
+        /*
+         * Charge les membres dès l'ouverture
+         */
         loadMembers();
+
+
+        /*
+         * Vérifie automatiquement les changements
+         * toutes les 30 secondes.
+         */
+        setInterval(function() {
+
+            loadMembers();
+
+        }, 30000);
+
     </script>
 
 </body>
