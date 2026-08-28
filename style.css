@@ -1,26 +1,31 @@
-* {
+/* =====================================
+   RESET
+===================================== */
 
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
     font-family: "Segoe UI", Arial, sans-serif;
-
 }
 
 
-body {
+/* =====================================
+   BODY
+===================================== */
 
+body {
     background: #0b0b0b;
     color: white;
     line-height: 1.7;
-
 }
 
 
-/* HEADER */
+/* =====================================
+   HEADER
+===================================== */
 
 header {
-
     min-height: 70vh;
 
     display: flex;
@@ -34,41 +39,33 @@ header {
     padding: 40px;
 
     background:
-
         linear-gradient(
             rgba(0, 0, 0, 0.75),
             rgba(0, 0, 0, 0.95)
         ),
-
         url("https://images.unsplash.com/photo-1560174038-da43ac74f01b");
 
     background-size: cover;
     background-position: center;
-
 }
 
-
 header h1 {
-
     font-size: 65px;
     color: #d4af37;
     margin-bottom: 20px;
-
 }
-
 
 header p {
-
     font-size: 25px;
     max-width: 700px;
-
 }
 
 
-/* BUTTONS */
+/* =====================================
+   BUTTONS
+===================================== */
 
 .button {
-
     display: inline-block;
 
     margin-top: 20px;
@@ -84,42 +81,40 @@ header p {
 
     border-radius: 10px;
 
+    transition: 0.2s;
 }
-
 
 .button:hover {
-
     background: white;
-
+    transform: translateY(-2px);
 }
 
 
-/* SECTIONS */
+/* =====================================
+   SECTIONS
+===================================== */
 
 section {
-
     padding: 70px 15%;
-
     text-align: center;
-
 }
-
 
 h2 {
-
     color: #d4af37;
-
     font-size: 38px;
-
     margin-bottom: 25px;
+}
 
+p {
+    margin-bottom: 18px;
 }
 
 
-/* CARDS */
+/* =====================================
+   CARDS
+===================================== */
 
 .card {
-
     background: #181818;
 
     padding: 35px;
@@ -127,32 +122,28 @@ h2 {
     border-radius: 20px;
 
     border: 1px solid #333;
-
 }
 
 
-/* LISTS */
+/* =====================================
+   LISTS
+===================================== */
 
 ul {
-
     list-style: none;
-
 }
-
 
 li {
-
     margin: 15px;
-
     font-size: 20px;
-
 }
 
 
-/* TEAM MEMBERS */
+/* =====================================
+   TEAM MEMBERS - ANCIENNES CARTES
+===================================== */
 
 .members {
-
     display: flex;
 
     justify-content: center;
@@ -160,12 +151,9 @@ li {
     gap: 30px;
 
     flex-wrap: wrap;
-
 }
 
-
 .member {
-
     background: #222;
 
     padding: 30px;
@@ -173,41 +161,35 @@ li {
     width: 230px;
 
     border-radius: 15px;
-
 }
-
 
 .member h3 {
-
     color: #d4af37;
-
 }
 
 
-/* STUDY LINKS */
+/* =====================================
+   STUDY LINKS
+===================================== */
 
 .study-link {
-
     color: #d4af37;
 
     text-decoration: none;
 
     font-weight: bold;
-
 }
-
 
 .study-link:hover {
-
     color: white;
-
 }
 
 
-/* CHALLENGE BUTTON */
+/* =====================================
+   CHALLENGE BUTTON
+===================================== */
 
 button {
-
     padding: 12px 25px;
 
     background: #d4af37;
@@ -221,21 +203,18 @@ button {
     font-weight: bold;
 
     cursor: pointer;
-
 }
-
 
 button:hover {
-
     background: white;
-
 }
 
 
-/* FOOTER */
+/* =====================================
+   FOOTER
+===================================== */
 
 footer {
-
     background: #050505;
 
     padding: 35px;
@@ -243,354 +222,8 @@ footer {
     text-align: center;
 
     color: #aaa;
-
 }
 
-
-/* MOBILE */
-
-@media (max-width: 700px) {
-
-    header h1 {
-
-        font-size: 40px;
-
-    }
-
-
-    header p {
-
-        font-size: 20px;
-
-    }
-
-
-    section {
-
-        padding: 40px 20px;
-
-    }
-
-
-    h2 {
-
-        font-size: 30px;
-
-    }
-
-
-    .button {
-
-        padding: 12px 25px;
-
-    }
-
-}
-
-
-/* ===============================
-   MEMBERS PAGE
-   =============================== */
-
-.members-list {
-
-    max-width: 900px;
-    margin: auto;
-
-}
-
-.members-list li {
-
-    background:#181818;
-
-    margin:10px 0;
-
-    padding:12px 20px;
-
-    border-radius:10px;
-
-    border:1px solid #333;
-
-    text-align:left;
-
-}
-
-.members-list li:hover {
-
-    background:#222;
-
-}
-
-/* ===============================
-   MEMBERS GRID
-   =============================== */
-
-.member-grid {
-
-    display:grid;
-
-    grid-template-columns:
-    repeat(auto-fit, minmax(220px, 1fr));
-
-    gap:20px;
-
-    max-width:1100px;
-
-    margin:auto;
-
-}
-
-
-.member-card {
-
-    background:#181818;
-
-    border:1px solid #333;
-
-    border-radius:15px;
-
-    padding:22px;
-
-    text-align:center;
-
-    transition:0.2s;
-
-}
-
-
-.member-card:hover {
-
-    background:#222;
-
-    transform:translateY(-4px);
-
-    border-color:#d4af37;
-
-}
-
-
-.member-card h3 {
-
-    color:#d4af37;
-
-    font-size:20px;
-
-    margin-bottom:10px;
-
-}
-
-
-.member-card a {
-
-    color:#aaa;
-
-    text-decoration:none;
-
-    font-weight:bold;
-
-}
-
-
-.member-card a:hover {
-
-    color:#d4af37;
-
-}
-
-
-.member-count {
-
-    color:#aaa;
-
-    font-size:20px;
-
-    margin-bottom:35px;
-
-}
-
-.tournament-card {
-
-    margin-bottom: 25px;
-
-}
-
-
-.tournament-card h3 {
-
-    color:#d4af37;
-
-    font-size:25px;
-
-    margin-bottom:15px;
-
-}
-
-
-.tournament-card p {
-
-    margin:8px 0;
-
-}
-
-
-.loading {
-
-    font-size:20px;
-
-    color:#aaa;
-
-}
-
-/* =====================================
-   TOURNAMENTS
-===================================== */
-
-.tournament-card {
-
-    margin-bottom:25px;
-
-}
-
-
-.tournament-card h3 {
-
-    color:#d4af37;
-
-    font-size:25px;
-
-    margin-bottom:15px;
-
-}
-
-
-.tournament-card p {
-
-    margin:8px 0;
-
-}
-
-
-.tournament-status {
-
-    font-weight:bold;
-
-}
-
-
-.status-current {
-
-    color:#4caf50;
-
-}
-
-
-.status-upcoming {
-
-    color:#4da6ff;
-
-}
-
-
-.status-finished {
-
-    color:#d4af37;
-
-}
-
-
-section > h3 {
-
-    color:#aaa;
-
-    font-size:24px;
-
-    margin-top:30px;
-
-    margin-bottom:20px;
-
-}
-
-
-.empty-card {
-
-    opacity:0.8;
-
-}
-
-.navigation {
-
-    display:flex;
-    flex-direction:column;
-    align-items:center;
-    gap:12px;
-    margin-top:20px;
-
-}
-
-.navigation .button {
-
-    margin-top:0;
-
-}
-
-/* Members page spacing */
-
-h1 {
-margin-bottom: 20px;
-}
-
-h2 {
-margin-top: 35px;
-margin-bottom: 20px;
-}
-
-p {
-margin-bottom: 18px;
-}
-
-#members {
-margin-top: 20px;
-margin-bottom: 35px;
-}
-
-#members div {
-margin-bottom: 10px;
-}
-
-footer {
-margin-top: 45px;
-}
-
-/* ===============================
-   MEMBERS PAGE - SPACING
-================================= */
-
-.members-page {
-    padding-top: 60px;
-    padding-bottom: 60px;
-}
-
-.members-page h1 {
-    margin-bottom: 25px;
-}
-
-.members-page > p {
-    margin-bottom: 50px;
-}
-
-.members-page h2 {
-    margin-top: 0;
-    margin-bottom: 30px;
-}
-
-#members {
-    margin-top: 0;
-    margin-bottom: 50px;
-}
-
-.members-page footer {
-    margin-top: 60px;
-}
 
 /* =====================================
    MEMBERS PAGE
@@ -598,14 +231,20 @@ margin-top: 45px;
 
 .members-page {
     min-height: 100vh;
+
     padding-top: 50px;
+
+    padding-bottom: 60px;
 }
 
 
-/* HEADER */
+/* =====================================
+   MEMBERS HEADER
+===================================== */
 
 .members-header {
     text-align: center;
+
     padding: 20px 20px 45px;
 }
 
@@ -618,34 +257,203 @@ margin-top: 45px;
 }
 
 
-/* MEMBERS */
+/* =====================================
+   MEMBERS SECTION
+===================================== */
 
 .members-section {
     padding: 30px 8% 50px;
+
     text-align: center;
 }
 
 .members-section h2 {
     margin-top: 0;
+
+    margin-bottom: 20px;
+}
+
+
+/* =====================================
+   MEMBERS COUNT
+===================================== */
+
+.members-count {
+    display: flex;
+
+    justify-content: center;
+
+    align-items: baseline;
+
+    gap: 8px;
+
+    margin: 10px 0 5px;
+}
+
+#member-count {
+    color: #d4af37;
+
+    font-size: 42px;
+
+    font-weight: bold;
+}
+
+.count-label {
+    color: #aaa;
+
+    font-size: 18px;
+}
+
+
+/* =====================================
+   LAST UPDATE
+===================================== */
+
+.last-update {
+    text-align: center;
+
+    color: #777;
+
+    font-size: 13px;
+
     margin-bottom: 30px;
 }
 
 
-/* MEMBER GRID */
+/* =====================================
+   MEMBERS GRID
+===================================== */
 
 #members {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+
+    grid-template-columns:
+        repeat(
+            auto-fit,
+            minmax(220px, 1fr)
+        );
+
     gap: 20px;
+
     max-width: 1100px;
+
     margin: 0 auto;
+
+    width: 100%;
 }
 
 
-/* MORE MEMBERS */
+/* =====================================
+   MEMBER CARD
+===================================== */
+
+.member-card {
+    display: flex;
+
+    align-items: center;
+
+    gap: 15px;
+
+    background: #181818;
+
+    border: 1px solid #333;
+
+    border-radius: 15px;
+
+    padding: 15px;
+
+    text-decoration: none;
+
+    color: white;
+
+    text-align: left;
+
+    transition:
+        transform 0.2s ease,
+        background 0.2s ease,
+        border-color 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+
+/* =====================================
+   MEMBER CARD HOVER
+===================================== */
+
+.member-card:hover {
+    background: #222;
+
+    transform: translateY(-4px);
+
+    border-color: #d4af37;
+
+    box-shadow:
+        0 8px 20px rgba(0, 0, 0, 0.4);
+}
+
+
+/* =====================================
+   MEMBER AVATAR
+===================================== */
+
+.member-avatar {
+    width: 55px;
+
+    height: 55px;
+
+    min-width: 55px;
+
+    border-radius: 50%;
+
+    object-fit: cover;
+
+    border: 2px solid #d4af37;
+
+    background: #0b0b0b;
+}
+
+
+/* =====================================
+   MEMBER NAME
+===================================== */
+
+.member-name {
+    color: #d4af37;
+
+    font-size: 18px;
+
+    font-weight: bold;
+
+    overflow: hidden;
+
+    text-overflow: ellipsis;
+
+    white-space: nowrap;
+}
+
+
+/* =====================================
+   LOADING
+===================================== */
+
+.loading {
+    font-size: 20px;
+
+    color: #aaa;
+
+    text-align: center;
+
+    grid-column: 1 / -1;
+}
+
+
+/* =====================================
+   MORE MEMBERS
+===================================== */
 
 .more-members {
     padding: 30px 20px 60px;
+
     text-align: center;
 }
 
@@ -654,22 +462,149 @@ margin-top: 45px;
 }
 
 
-/* FOOTER */
+/* =====================================
+   MEMBERS FOOTER
+===================================== */
 
 .members-page footer {
     margin-top: 0;
+
     padding: 40px 20px;
 }
 
 .members-page footer h2 {
     margin-top: 0;
+
     margin-bottom: 20px;
 }
 
 
-/* MOBILE */
+/* =====================================
+   TOURNAMENTS
+===================================== */
+
+.tournament-card {
+    margin-bottom: 25px;
+}
+
+.tournament-card h3 {
+    color: #d4af37;
+
+    font-size: 25px;
+
+    margin-bottom: 15px;
+}
+
+.tournament-card p {
+    margin: 8px 0;
+}
+
+.tournament-status {
+    font-weight: bold;
+}
+
+.status-current {
+    color: #4caf50;
+}
+
+.status-upcoming {
+    color: #4da6ff;
+}
+
+.status-finished {
+    color: #d4af37;
+}
+
+section > h3 {
+    color: #aaa;
+
+    font-size: 24px;
+
+    margin-top: 30px;
+
+    margin-bottom: 20px;
+}
+
+.empty-card {
+    opacity: 0.8;
+}
+
+
+/* =====================================
+   NAVIGATION
+===================================== */
+
+.navigation {
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    gap: 12px;
+
+    margin-top: 20px;
+}
+
+.navigation .button {
+    margin-top: 0;
+}
+
+
+/* =====================================
+   MEMBERS LIST
+===================================== */
+
+.members-list {
+    max-width: 900px;
+
+    margin: auto;
+}
+
+.members-list li {
+    background: #181818;
+
+    margin: 10px 0;
+
+    padding: 12px 20px;
+
+    border-radius: 10px;
+
+    border: 1px solid #333;
+
+    text-align: left;
+}
+
+.members-list li:hover {
+    background: #222;
+}
+
+
+/* =====================================
+   MOBILE
+===================================== */
 
 @media (max-width: 700px) {
+
+    header h1 {
+        font-size: 40px;
+    }
+
+    header p {
+        font-size: 20px;
+    }
+
+    section {
+        padding: 40px 20px;
+    }
+
+    h2 {
+        font-size: 30px;
+    }
+
+    .button {
+        padding: 12px 25px;
+    }
 
     .members-page {
         padding-top: 25px;
@@ -681,11 +616,32 @@ margin-top: 45px;
 
     .members-section {
         padding-left: 20px;
+
         padding-right: 20px;
     }
 
     #members {
         grid-template-columns: 1fr;
+    }
+
+    .member-card {
+        padding: 13px;
+    }
+
+    .member-avatar {
+        width: 48px;
+
+        height: 48px;
+
+        min-width: 48px;
+    }
+
+    .member-name {
+        font-size: 16px;
+    }
+
+    #member-count {
+        font-size: 36px;
     }
 
 }

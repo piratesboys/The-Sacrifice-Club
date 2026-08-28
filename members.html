@@ -1,24 +1,35 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
 
     <title>Club Members ♟️</title>
 
     <link rel="stylesheet" href="style.css">
+
 </head>
+
 
 <body>
 
     <main class="members-page">
+
+        <!-- HEADER -->
 
         <header class="members-header">
 
             <h1>♟️ CLUB MEMBERS</h1>
 
             <p>
-                The players who make The Sacrifice Club stronger every day.
+                The players who make The Sacrifice Club
+                stronger every day.
             </p>
 
             <a class="button" href="index.html">
@@ -28,33 +39,76 @@
         </header>
 
 
+        <!-- MEMBERS -->
+
         <section class="members-section">
 
             <h2>♟️ Members</h2>
 
+
+            <!-- MEMBER COUNT -->
+
+            <div class="members-count">
+
+                <span id="member-count">
+                    Loading...
+                </span>
+
+                <span class="count-label">
+                    members
+                </span>
+
+            </div>
+
+
+            <!-- LAST UPDATE -->
+
+            <p
+                id="last-update"
+                class="last-update"
+            >
+                Updating...
+            </p>
+
+
+            <!-- MEMBERS LIST -->
+
             <div id="members">
-                <p class="loading">Loading members...</p>
+
+                <p class="loading">
+                    Loading members...
+                </p>
+
             </div>
 
         </section>
 
 
+        <!-- MORE MEMBERS -->
+
         <section class="more-members">
 
-            <h2>🔥 More members coming soon!</h2>
+            <h2>
+                🔥 More members coming soon!
+            </h2>
 
         </section>
 
 
+        <!-- FOOTER -->
+
         <footer>
 
-            <h2>🔥 LONG LIVE ATTACKING CHESS! ♟️</h2>
+            <h2>
+                🔥 LONG LIVE ATTACKING CHESS! ♟️
+            </h2>
 
             <p>
                 The Sacrifice Club - Official Lichess Team
             </p>
 
             <p>
+
                 <a
                     href="https://lichess.org/team/the-sacrifice-club"
                     target="_blank"
@@ -62,6 +116,7 @@
                 >
                     Visit our Lichess Team
                 </a>
+
             </p>
 
         </footer>
@@ -71,132 +126,367 @@
 
     <script>
 
-        const MEMBERS_API =
+        /*
+         * ==========================================
+         * CONFIGURATION
+         * ==========================================
+         */
+
+        const API_URL =
             "https://lichess.org/api/team/the-sacrifice-club/users";
+
+        /*
+         * Mise à jour toutes les 30 secondes
+         */
+        const UPDATE_INTERVAL = 30000;
+
+
+        /*
+         * ==========================================
+         * LOAD MEMBERS
+         * ==========================================
+         */
 
         async function loadMembers() {
 
             const container =
                 document.getElementById("members");
 
+            const count =
+                document.getElementById("member-count");
+
+            const lastUpdate =
+                document.getElementById("last-update");
+
+
             try {
 
+                /*
+                 * Demande les membres à Lichess
+                 */
+
                 const response = await fetch(
-                    MEMBERS_API,
+                    API_URL,
                     {
                         method: "GET",
                         cache: "no-store"
                     }
                 );
 
+
+                /*
+                 * Vérifie la réponse
+                 */
+
                 if (!response.ok) {
+
                     throw new Error(
                         "Lichess returned HTTP " +
                         response.status
                     );
+
                 }
+
+
+                /*
+                 * L'API renvoie du JSONL :
+                 * un objet JSON par ligne.
+                 */
 
                 const text =
                     await response.text();
 
-                const lines = text
-                    .split("\n")
-                    .filter(function(line) {
-                        return line.trim() !== "";
-                    });
 
                 const members =
-                    lines.map(function(line) {
-                        return JSON.parse(line);
-                    });
+                    text
+                        .split("\n")
+                        .filter(
+                            line =>
+                                line.trim() !== ""
+                        )
+                        .map(
+                            line =>
+                                JSON.parse(line)
+                        );
+
 
                 /*
-                 * Si aucun membre n'est trouvé
+                 * ==================================
+                 * NO MEMBERS
+                 * ==================================
                  */
+
                 if (members.length === 0) {
+
+                    count.textContent = "0";
 
                     container.innerHTML =
                         "<p>No members found.</p>";
 
                     return;
+
                 }
 
+
                 /*
-                 * Création de la liste
+                 * ==================================
+                 * MEMBER COUNT
+                 * ==================================
                  */
+
+                count.textContent =
+                    members.length;
+
+
+                /*
+                 * ==================================
+                 * CREATE MEMBER CARDS
+                 * ==================================
+                 */
+
+                const fragment =
+                    document.createDocumentFragment();
+
+
+                members.forEach(
+                    member => {
+
+                        /*
+                         * Username
+                         */
+
+                        const username =
+                            member.username ||
+                            member.name ||
+                            member.id;
+
+
+                        if (!username) {
+                            return;
+                        }
+
+
+                        /*
+                         * Member card
+                         */
+
+                        const card =
+                            document.createElement(
+                                "a"
+                            );
+
+
+                        card.className =
+                            "member-card";
+
+
+                        /*
+                         * Lien vers le profil Lichess
+                         */
+
+                        card.href =
+                            "https://lichess.org/@" +
+                            encodeURIComponent(
+                                username
+                            );
+
+
+                        card.target = "_blank";
+
+
+                        card.rel =
+                            "noopener noreferrer";
+
+
+                        /*
+                         * ==================================
+                         * AVATAR
+                         * ==================================
+                         */
+
+                        const avatar =
+                            document.createElement(
+                                "img"
+                            );
+
+
+                        /*
+                         * Avatar Lichess
+                         */
+
+                        avatar.src =
+                            "https://lichess1.org/" +
+                            "user/" +
+                            encodeURIComponent(
+                                username
+                            ) +
+                            "/avatar";
+
+
+                        avatar.alt =
+                            username +
+                            " avatar";
+
+
+                        avatar.className =
+                            "member-avatar";
+
+
+                        /*
+                         * Si l'avatar ne fonctionne pas,
+                         * on utilise l'avatar par défaut.
+                         */
+
+                        avatar.onerror =
+                            function() {
+
+                                this.src =
+                                    "https://lichess1.org/" +
+                                    "assets/logo/lichess-favicon-512.png";
+
+                            };
+
+
+                        /*
+                         * ==================================
+                         * USERNAME
+                         * ==================================
+                         */
+
+                        const name =
+                            document.createElement(
+                                "span"
+                            );
+
+
+                        name.className =
+                            "member-name";
+
+
+                        name.textContent =
+                            "♟️ " + username;
+
+
+                        /*
+                         * ==================================
+                         * ADD TO CARD
+                         * ==================================
+                         */
+
+                        card.appendChild(
+                            avatar
+                        );
+
+                        card.appendChild(
+                            name
+                        );
+
+
+                        fragment.appendChild(
+                            card
+                        );
+
+                    }
+                );
+
+
+                /*
+                 * ==================================
+                 * DISPLAY EVERYTHING
+                 * ==================================
+                 */
+
                 container.innerHTML = "";
 
-                members.forEach(function(member) {
-
-                    const card =
-                        document.createElement("div");
-
-                    card.className =
-                        "member-card";
+                container.appendChild(
+                    fragment
+                );
 
 
-                    const username =
-                        member.username ||
-                        "Unknown player";
+                /*
+                 * ==================================
+                 * LAST UPDATE
+                 * ==================================
+                 */
+
+                const now =
+                    new Date();
 
 
-                    const link =
-                        document.createElement("a");
+                lastUpdate.textContent =
+                    "Last updated: " +
+                    now.toLocaleTimeString();
 
-                    link.href =
-                        "https://lichess.org/@" +
-                        encodeURIComponent(username);
-
-                    link.target = "_blank";
-
-                    link.rel =
-                        "noopener noreferrer";
-
-                    link.textContent =
-                        "♟️ " + username;
-
-
-                    card.appendChild(link);
-
-                    container.appendChild(card);
-
-                });
 
                 console.log(
-                    "Members updated:",
+                    "Lichess members updated:",
                     members.length
                 );
 
+
             } catch (error) {
+
+                /*
+                 * ==================================
+                 * ERROR
+                 * ==================================
+                 */
 
                 console.error(
                     "Unable to load Lichess members:",
                     error
                 );
 
+
+                count.textContent = "—";
+
+
                 container.innerHTML =
-                    "<p>🔴 Unable to update members</p>";
+                    `
+                    <p>
+                        🔴 Unable to update members.
+                        <br>
+                        Please try again later.
+                    </p>
+                    `;
+
+
+                lastUpdate.textContent =
+                    "Update failed";
+
             }
+
         }
 
 
         /*
-         * Charge les membres dès l'ouverture
+         * ==========================================
+         * FIRST UPDATE
+         * ==========================================
          */
+
         loadMembers();
 
 
         /*
-         * Vérifie automatiquement les changements
-         * toutes les 30 secondes.
+         * ==========================================
+         * AUTOMATIC UPDATE
+         * ==========================================
+         *
+         * Toutes les 30 secondes,
+         * le site demande à Lichess
+         * s'il y a de nouveaux membres.
+         *
          */
-        setInterval(function() {
 
-            loadMembers();
-
-        }, 30000);
+        setInterval(
+            loadMembers,
+            UPDATE_INTERVAL
+        );
 
     </script>
 
+
 </body>
+
 </html>
