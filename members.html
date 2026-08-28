@@ -1,135 +1,95 @@
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
     <title>Club Members ♟️</title>
-
     <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-    <main class="members-page">
+```
+<main class="container">
 
-        <h1>♟️ CLUB MEMBERS</h1>
+    <h1>♟️ CLUB MEMBERS</h1>
 
+    <p>
+        The players who make The Sacrifice Club stronger every day.
+    </p>
+
+    <p>
+        <a href="index.html">⬅ Back to Home</a>
+    </p>
+
+    <h2>♟️ Members</h2>
+
+    <div id="members">
+        Loading members...
+    </div>
+
+    <h2>🔥 More members coming soon!</h2>
+
+    <footer>
+        <p>🔥 LONG LIVE ATTACKING CHESS! ♟️</p>
+        <p>The Sacrifice Club - Official Lichess Team</p>
         <p>
-            The players who make The Sacrifice Club stronger every day.
+            <a href="https://lichess.org/team/the-sacrifice-club" target="_blank">
+                Visit our Lichess Team
+            </a>
         </p>
+    </footer>
 
-        <p>
-            <a href="index.html">⬅ Back to Home</a>
-        </p>
+</main>
 
-        <section>
-            <h2>♟️ Members</h2>
+<script>
+    const TEAM_ID = "the-sacrifice-club";
+    const membersContainer = document.getElementById("members");
 
-            <div id="members">
-                <p>Loading members...</p>
-            </div>
-        </section>
+    async function loadMembers() {
+        try {
+            const response = await fetch(
+                `https://lichess.org/api/team/${TEAM_ID}/users`
+            );
 
-        <section>
-            <h2>🔥 More members coming soon!</h2>
-        </section>
-
-        <footer>
-            <h2>🔥 LONG LIVE ATTACKING CHESS! ♟️</h2>
-
-            <p>
-                The Sacrifice Club - Official Lichess Team
-            </p>
-
-            <p>
-                <a
-                    href="https://lichess.org/team/the-sacrifice-club"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                >
-                    Visit our Lichess Team
-                </a>
-            </p>
-        </footer>
-
-    </main>
-
-    <script>
-        async function loadMembers() {
-
-            const container = document.getElementById("members");
-
-            try {
-
-                const response = await fetch(
-                    "https://lichess.org/api/team/the-sacrifice-club/users"
-                );
-
-                if (!response.ok) {
-                    throw new Error(
-                        "Lichess returned HTTP " + response.status
-                    );
-                }
-
-                const text = await response.text();
-
-                const lines = text
-                    .split("\n")
-                    .filter(function(line) {
-                        return line.trim() !== "";
-                    });
-
-                const members = lines.map(function(line) {
-                    return JSON.parse(line);
-                });
-
-                if (members.length === 0) {
-                    container.innerHTML =
-                        "<p>No members found.</p>";
-                    return;
-                }
-
-                container.innerHTML = "";
-
-                members.forEach(function(member) {
-
-                    const card = document.createElement("div");
-                    card.className = "member-card";
-
-                    const username =
-                        member.username || "Unknown player";
-
-                    const link = document.createElement("a");
-
-                    link.href =
-                        "https://lichess.org/@/" +
-                        encodeURIComponent(username);
-
-                    link.target = "_blank";
-                    link.rel = "noopener noreferrer";
-
-                    link.textContent = "♟️ " + username;
-
-                    card.appendChild(link);
-
-                    container.appendChild(card);
-                });
-
-            } catch (error) {
-
-                console.error(
-                    "Unable to load Lichess members:",
-                    error
-                );
-
-                container.innerHTML =
-                    "<p>🔴 Unable to update members</p>";
+            if (!response.ok) {
+                throw new Error(`HTTP ${response.status}`);
             }
-        }
 
-        loadMembers();
-    </script>
+            const members = await response.json();
+
+            membersContainer.innerHTML = "";
+
+            members.forEach(member => {
+                if (!member.username) return;
+
+                const link = document.createElement("a");
+                link.href = `https://lichess.org/@/${encodeURIComponent(member.username)}`;
+                link.target = "_blank";
+                link.rel = "noopener noreferrer";
+                link.textContent = `♟️ ${member.username}`;
+
+                const div = document.createElement("div");
+                div.appendChild(link);
+
+                membersContainer.appendChild(div);
+            });
+
+            if (membersContainer.children.length === 0) {
+                membersContainer.textContent = "No members found.";
+            }
+
+        } catch (error) {
+            console.error("Unable to load members:", error);
+            membersContainer.textContent =
+                "🔴 Unable to update members";
+        }
+    }
+
+    loadMembers();
+</script>
+```
 
 </body>
 </html>
