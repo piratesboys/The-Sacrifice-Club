@@ -1,12 +1,9 @@
-```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
     <title>Club Members ♟️</title>
-
     <link rel="stylesheet" href="style.css">
 </head>
 
@@ -21,7 +18,9 @@
         </p>
 
         <p>
-            <a href="index.html">⬅ Back to Home</a>
+            <a href="https://the-sacrifice-club.netlify.app/">
+                ⬅ Back to Home
+            </a>
         </p>
 
         <section>
@@ -38,6 +37,7 @@
 
         <footer>
             <h2>🔥 LONG LIVE ATTACKING CHESS! ♟️</h2>
+
             <p>The Sacrifice Club - Official Lichess Team</p>
 
             <p>
@@ -59,6 +59,7 @@
             const container = document.getElementById("members");
 
             try {
+
                 const response = await fetch("/api/members");
 
                 if (!response.ok) {
@@ -72,8 +73,7 @@
                 }
 
                 if (!data.members || data.members.length === 0) {
-                    container.innerHTML =
-                        "<p>No members found.</p>";
+                    container.innerHTML = "<p>No members found.</p>";
                     return;
                 }
 
@@ -86,32 +86,24 @@
                     card.className = "member-card";
 
                     const username =
-                        member.username || member.name || "Unknown player";
+                        member.username || "Unknown player";
 
-                    card.innerHTML =
-                        '<h3>♟️ ' +
-                        escapeHTML(username) +
-                        "</h3>";
+                    const title = document.createElement("h3");
+
+                    title.textContent = "♟️ " + username;
+
+                    card.appendChild(title);
 
                     container.appendChild(card);
                 });
 
             } catch (error) {
 
-                console.error(error);
+                console.error("Members error:", error);
 
                 container.innerHTML =
                     "<p>🔴 Unable to update members</p>";
             }
-        }
-
-        function escapeHTML(text) {
-
-            const div = document.createElement("div");
-
-            div.textContent = text;
-
-            return div.innerHTML;
         }
 
         loadMembers();
@@ -119,4 +111,3 @@
 
 </body>
 </html>
-```
