@@ -39,99 +39,99 @@ const sacrifices = [
     {
         rank: 1,
 
-        title: "The Brilliant Sacrifice",
+        title: "coming soon...",
 
-        player: "OneoftheTwo",
+        player: "...",
 
-        opponent: "Opponent",
+        opponent: "...",
 
-        move: "Bxf7+!!",
+        move: "...",
 
         description:
-            "A spectacular bishop sacrifice that opens the king and creates a dangerous attack.",
+            "...",
 
         game:
-            "https://lichess.org/",
+            "...",
 
-        date: "September 2026",
+        date: "...",
 
-        type: "Bishop sacrifice",
+        type: "...",
 
-        speed: "Blitz"
+        speed: "..."
     },
 
 
     {
         rank: 2,
 
-        title: "The King's Destruction",
+        title: "coming soon...",
 
-        player: "Player2",
+        player: "...",
 
-        opponent: "Opponent2",
+        opponent: "...",
 
-        move: "Rxf7!!",
+        move: "...",
 
         description:
-            "A fearless exchange sacrifice that completely destroys the opponent's king position.",
+            "...",
 
         game:
-            "https://lichess.org/",
+            "...",
 
-        date: "September 2026",
+        date: "...",
 
-        type: "Rook sacrifice",
+        type: "...",
 
-        speed: "Rapid"
+        speed: "..."
     },
 
 
     {
         rank: 3,
 
-        title: "The Attacking Sacrifice",
+        title: "coming soon...",
 
-        player: "Player3",
+        player: "...",
 
-        opponent: "Opponent3",
+        opponent: "...",
 
-        move: "Bxh7+!!",
+        move: "...",
 
         description:
-            "A classic attacking sacrifice designed to expose the enemy king.",
+            "...",
 
         game:
-            "https://lichess.org/",
+            "...",
 
-        date: "September 2026",
+        date: "...",
 
-        type: "Bishop sacrifice",
+        type: "...",
 
-        speed: "Blitz"
+        speed: "..."
     },
 
     {
         rank: 4,
 
-        title: "The King's Destruction",
+        title: "coming soon...",
 
-        player: "Player2",
+        player: "...",
 
-        opponent: "Opponent2",
+        opponent: "...",
 
-        move: "Rxf7!!",
+        move: "...",
 
         description:
-            "A fearless exchange sacrifice that completely destroys the opponent's king position.",
+            "...",
 
         game:
-            "https://lichess.org/",
+            "...",
 
-        date: "September 2026",
+        date: "...",
 
-        type: "Rook sacrifice",
+        type: "...",
 
-        speed: "Rapid"
+        speed: "..."
     }
 
 
