@@ -536,14 +536,12 @@ section > h3 {
 
 .navigation {
     display: flex;
-
-    flex-direction: column;
-
+    flex-direction: row;
+    justify-content: center;
     align-items: center;
-
     gap: 12px;
-
     margin-top: 20px;
+    flex-wrap: wrap;
 }
 
 .navigation .button {
@@ -606,6 +604,25 @@ section > h3 {
         padding: 12px 25px;
     }
 
+    /* =========================
+       NAVIGATION MOBILE
+    ========================= */
+
+    .navigation {
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .navigation .button {
+        width: 100%;
+        max-width: 300px;
+        text-align: center;
+    }
+
+    /* =========================
+       MEMBERS
+    ========================= */
+
     .members-page {
         padding-top: 25px;
     }
@@ -616,7 +633,6 @@ section > h3 {
 
     .members-section {
         padding-left: 20px;
-
         padding-right: 20px;
     }
 
@@ -630,9 +646,7 @@ section > h3 {
 
     .member-avatar {
         width: 48px;
-
         height: 48px;
-
         min-width: 48px;
     }
 
@@ -642,6 +656,722 @@ section > h3 {
 
     #member-count {
         font-size: 36px;
+    }
+
+}
+
+
+/* =====================================
+   SACRIFICES OF THE WEEK
+===================================== */
+
+.sacrifices-header {
+    min-height: 60vh;
+
+    display: flex;
+    flex-direction: column;
+
+    justify-content: center;
+    align-items: center;
+
+    text-align: center;
+
+    padding: 50px 20px;
+
+    position: relative;
+
+    background:
+        linear-gradient(
+            rgba(5, 5, 5, 0.70),
+            rgba(5, 5, 5, 0.96)
+        ),
+        url("https://images.unsplash.com/photo-1586165368502-1bad197a6461");
+
+    background-size: cover;
+    background-position: center;
+}
+
+
+/* =====================================
+   HEADER CONTENT
+===================================== */
+
+.sacrifices-header .header-content {
+    max-width: 900px;
+}
+
+.club-badge {
+    width: 80px;
+    height: 80px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    margin: 0 auto 20px;
+
+    border: 2px solid #d4af37;
+    border-radius: 50%;
+
+    background: rgba(212, 175, 55, 0.08);
+
+    color: #d4af37;
+
+    font-size: 42px;
+
+    box-shadow:
+        0 0 30px rgba(212, 175, 55, 0.12);
+}
+
+
+.eyebrow {
+    color: #d4af37;
+
+    font-size: 13px !important;
+
+    font-weight: bold;
+
+    letter-spacing: 4px;
+
+    text-transform: uppercase;
+
+    margin-bottom: 10px !important;
+}
+
+
+.sacrifices-header h1 {
+    margin: 0 0 20px;
+
+    color: #d4af37;
+
+    font-size: clamp(42px, 7vw, 76px);
+
+    line-height: 1.05;
+
+    letter-spacing: 2px;
+
+    text-shadow:
+        0 5px 25px rgba(0, 0, 0, 0.7);
+}
+
+
+.sacrifices-header h1 span {
+    display: block;
+
+    color: white;
+}
+
+
+.header-description {
+    max-width: 700px;
+
+    margin: 0 auto 30px;
+
+    color: #d0d0d0;
+
+    font-size: 20px !important;
+}
+
+
+/* =====================================
+   NAVIGATION
+===================================== */
+
+.sacrifices-header .navigation {
+    margin-top: 25px;
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    flex-wrap: wrap;
+
+    gap: 10px;
+}
+
+
+.sacrifices-header .navigation .button {
+    margin: 0;
+
+    padding: 12px 20px;
+
+    background: rgba(212, 175, 55, 0.10);
+
+    border: 1px solid rgba(212, 175, 55, 0.45);
+
+    color: #eee;
+
+    border-radius: 10px;
+
+    backdrop-filter: blur(8px);
+
+    transition:
+        transform 0.2s ease,
+        background 0.2s ease,
+        border-color 0.2s ease,
+        color 0.2s ease;
+}
+
+
+.sacrifices-header .navigation .button:hover {
+    transform: translateY(-3px);
+
+    background: #d4af37;
+
+    border-color: #d4af37;
+
+    color: #080808;
+}
+
+
+.sacrifices-header .navigation .button.active {
+    background: #d4af37;
+
+    border-color: #d4af37;
+
+    color: #080808;
+}
+
+
+/* =====================================
+   MAIN PAGE
+===================================== */
+
+.sacrifices-page {
+    max-width: 1200px;
+
+    margin: 0 auto;
+
+    padding: 90px 25px;
+}
+
+
+.section-heading {
+    max-width: 800px;
+
+    margin: 0 auto 55px;
+
+    text-align: center;
+}
+
+
+.section-label {
+    margin-bottom: 10px;
+
+    color: #d4af37;
+
+    font-size: 13px;
+
+    font-weight: bold;
+
+    letter-spacing: 3px;
+
+    text-transform: uppercase;
+}
+
+
+.section-heading h2 {
+    margin-bottom: 15px;
+
+    font-size: clamp(32px, 5vw, 48px);
+}
+
+
+.sacrifices-intro {
+    max-width: 700px;
+
+    margin: 0 auto;
+
+    color: #999;
+
+    font-size: 17px;
+}
+
+
+/* =====================================
+   SACRIFICES GRID
+===================================== */
+
+#sacrifices {
+    display: grid;
+
+    grid-template-columns:
+        repeat(
+            auto-fit,
+            minmax(320px, 1fr)
+        );
+
+    gap: 25px;
+
+    width: 100%;
+}
+
+
+/* =====================================
+   SACRIFICE CARD
+===================================== */
+
+.sacrifice-card {
+    position: relative;
+
+    display: flex;
+
+    min-height: 260px;
+
+    overflow: hidden;
+
+    background:
+        linear-gradient(
+            145deg,
+            #1b1b1b,
+            #101010
+        );
+
+    border: 1px solid #2d2d2d;
+
+    border-radius: 20px;
+
+    box-shadow:
+        0 10px 30px rgba(0, 0, 0, 0.25);
+
+    transition:
+        transform 0.25s ease,
+        border-color 0.25s ease,
+        box-shadow 0.25s ease;
+}
+
+
+/* IMPORTANT:
+   Hover effect was previously applied
+   permanently to every card.
+*/
+
+.sacrifice-card:hover {
+    transform: translateY(-7px);
+
+    border-color: #d4af37;
+
+    box-shadow:
+        0 20px 45px rgba(0, 0, 0, 0.5),
+        0 0 25px rgba(212, 175, 55, 0.08);
+}
+
+
+/* =====================================
+   CARD RANK
+===================================== */
+
+.sacrifice-rank {
+    width: 100px;
+
+    min-width: 100px;
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    background:
+        linear-gradient(
+            180deg,
+            #171717,
+            #0c0c0c
+        );
+
+    border-right: 1px solid #292929;
+
+    color: #d4af37;
+
+    font-size: 34px;
+
+    font-weight: bold;
+}
+
+
+/* =====================================
+   CARD CONTENT
+===================================== */
+
+.sacrifice-content {
+    flex: 1;
+
+    padding: 30px;
+}
+
+
+.sacrifice-title {
+    display: flex;
+
+    align-items: center;
+
+    gap: 10px;
+
+    margin-bottom: 8px;
+}
+
+
+.sacrifice-title span {
+    font-size: 24px;
+}
+
+
+.sacrifice-title h3 {
+    margin: 0;
+
+    color: #d4af37;
+
+    font-size: 24px;
+}
+
+
+.sacrifice-players {
+    margin-bottom: 18px;
+
+    color: #888;
+
+    font-size: 14px;
+}
+
+
+.sacrifice-players strong {
+    color: #eee;
+}
+
+
+/* =====================================
+   SACRIFICED MOVE
+===================================== */
+
+.sacrifice-move {
+    display: inline-flex;
+
+    align-items: center;
+
+    padding: 9px 18px;
+
+    margin-bottom: 18px;
+
+    background: #080808;
+
+    border: 1px solid rgba(212, 175, 55, 0.55);
+
+    border-radius: 9px;
+
+    color: #d4af37;
+
+    font-family: Georgia, "Times New Roman", serif;
+
+    font-size: 26px;
+
+    font-weight: bold;
+
+    box-shadow:
+        inset 0 0 15px rgba(212, 175, 55, 0.04);
+}
+
+
+/* =====================================
+   DESCRIPTION
+===================================== */
+
+.sacrifice-description {
+    max-width: 800px;
+
+    margin-bottom: 15px;
+
+    color: #c5c5c5;
+
+    font-size: 15px;
+}
+
+
+/* =====================================
+   INFO TAGS
+===================================== */
+
+.sacrifice-info {
+    display: flex;
+
+    flex-wrap: wrap;
+
+    gap: 8px;
+
+    margin-top: 20px;
+}
+
+
+.sacrifice-info span {
+    padding: 6px 10px;
+
+    background: #222;
+
+    border: 1px solid #333;
+
+    border-radius: 7px;
+
+    color: #999;
+
+    font-size: 12px;
+}
+
+
+/* =====================================
+   LOADING CARD
+===================================== */
+
+.loading-card {
+    grid-column: 1 / -1;
+
+    justify-content: center;
+
+    align-items: center;
+
+    min-height: 180px;
+
+    text-align: center;
+
+    color: #999;
+}
+
+
+.loading-card:hover {
+    transform: none;
+
+    border-color: #2d2d2d;
+
+    box-shadow:
+        0 10px 30px rgba(0, 0, 0, 0.25);
+}
+
+
+/* =====================================
+   SACRIFICE CTA
+===================================== */
+
+.sacrifice-cta {
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    gap: 35px;
+
+    margin-top: 80px;
+
+    padding: 40px;
+
+    text-align: left;
+
+    background:
+        linear-gradient(
+            135deg,
+            #181818,
+            #101010
+        );
+
+    border: 1px solid #333;
+
+    border-radius: 22px;
+}
+
+
+.sacrifice-cta h2 {
+    margin-bottom: 10px;
+
+    font-size: 30px;
+}
+
+
+.sacrifice-cta p {
+    max-width: 650px;
+
+    margin-bottom: 0;
+
+    color: #999;
+}
+
+
+.cta-button {
+    flex-shrink: 0;
+
+    padding: 15px 25px;
+
+    background: #d4af37;
+
+    color: #080808;
+
+    text-decoration: none;
+
+    border-radius: 10px;
+
+    font-weight: bold;
+
+    transition:
+        transform 0.2s ease,
+        background 0.2s ease;
+}
+
+
+.cta-button:hover {
+    transform: translateY(-3px);
+
+    background: white;
+}
+
+
+/* =====================================
+   FOOTER
+===================================== */
+
+.sacrifices-page + footer {
+    border-top: 1px solid #181818;
+}
+
+
+.footer-symbol {
+    margin-bottom: 10px;
+
+    color: #d4af37;
+
+    font-size: 40px;
+}
+
+
+footer h2 {
+    margin-bottom: 10px;
+}
+
+
+.footer-small {
+    color: #555;
+
+    font-size: 13px;
+}
+
+
+/* =====================================
+   MOBILE
+===================================== */
+
+@media (max-width: 700px) {
+
+    .sacrifices-header {
+        min-height: auto;
+
+        padding:
+            70px
+            20px
+            45px;
+    }
+
+
+    .club-badge {
+        width: 65px;
+        height: 65px;
+
+        font-size: 34px;
+    }
+
+
+    .sacrifices-header h1 {
+        font-size: 40px;
+
+        letter-spacing: 1px;
+    }
+
+
+    .header-description {
+        font-size: 17px !important;
+    }
+
+
+    .sacrifices-header .navigation {
+        width: 100%;
+
+        flex-direction: column;
+    }
+
+
+    .sacrifices-header .navigation .button {
+        width: 100%;
+
+        max-width: 320px;
+
+        text-align: center;
+    }
+
+
+    .sacrifices-page {
+        padding:
+            60px
+            18px;
+    }
+
+
+    #sacrifices {
+        grid-template-columns: 1fr;
+    }
+
+
+    .sacrifice-card {
+        flex-direction: column;
+    }
+
+
+    .sacrifice-rank {
+        width: 100%;
+
+        min-width: 0;
+
+        padding: 15px;
+
+        border-right: none;
+
+        border-bottom: 1px solid #292929;
+
+        font-size: 25px;
+    }
+
+
+    .sacrifice-content {
+        padding: 23px;
+    }
+
+
+    .sacrifice-title h3 {
+        font-size: 20px;
+    }
+
+
+    .sacrifice-move {
+        font-size: 22px;
+    }
+
+
+    .sacrifice-info {
+        flex-direction: column;
+    }
+
+
+    .sacrifice-cta {
+        flex-direction: column;
+
+        align-items: flex-start;
+
+        padding: 28px;
+
+        margin-top: 55px;
+    }
+
+
+    .cta-button {
+        width: 100%;
+
+        text-align: center;
     }
 
 }

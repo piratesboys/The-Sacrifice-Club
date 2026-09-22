@@ -3,36 +3,67 @@
 // =====================================
 
 
-// ===============================
-// MEMBER COUNTER
-// ===============================
+// =====================================
+// CONFIGURATION
+// =====================================
 
-let members = 59;
-let goal = 60;
+const TEAM_ID = "the-sacrifice-club";
+const MEMBER_GOAL = 100;
 
 
-function updateMembers() {
+// =====================================
+// MEMBER COUNTER - LICHESS API
+// =====================================
 
-    let counter = document.getElementById("memberCounter");
+async function updateMembers() {
 
-    if (counter) {
+    const counter = document.getElementById("memberCounter");
 
-        counter.innerHTML =
-        "♟️ Members: " + members + " / " + goal;
+    if (!counter) return;
+
+    // Temporary message while loading
+    counter.textContent = "♟️ Members: Loading...";
+
+    try {
+
+        const response = await fetch(
+            `https://lichess.org/api/team/${TEAM_ID}/users`
+        );
+
+        if (!response.ok) {
+            throw new Error(`Lichess API error: ${response.status}`);
+        }
+
+        const text = await response.text();
+
+        // Lichess returns one JSON object per line
+        const members = text
+            .trim()
+            .split("\n")
+            .filter(line => line.trim() !== "")
+            .map(line => JSON.parse(line));
+
+        const memberCount = members.length;
+
+        counter.textContent =
+            `♟️ Members: ${memberCount} / ${MEMBER_GOAL}`;
+
+    } catch (error) {
+
+        console.error("Unable to load Lichess team members:", error);
+
+        // Fallback if the API cannot be reached
+        counter.textContent =
+            `♟️ Members: -- / ${MEMBER_GOAL}`;
 
     }
 
 }
 
 
-updateMembers();
-
-
-
-
-// ===============================
+// =====================================
 // CHESS QUOTES
-// ===============================
+// =====================================
 
 const quotes = [
 
@@ -51,29 +82,22 @@ const quotes = [
 
 function newQuote() {
 
-    let quote =
-    document.getElementById("quote");
+    const quote = document.getElementById("quote");
 
+    if (!quote || quotes.length === 0) return;
 
-    if (quote) {
-
-        let random =
+    const random =
         Math.floor(Math.random() * quotes.length);
 
-
-        quote.innerHTML =
-        "♟️ " + quotes[random];
-
-    }
+    quote.textContent =
+        `♟️ ${quotes[random]}`;
 
 }
 
 
-
-
-// ===============================
+// =====================================
 // SACRIFICE OF THE DAY
-// ===============================
+// =====================================
 
 const sacrifices = [
 
@@ -92,24 +116,18 @@ const sacrifices = [
 
 function showSacrifice() {
 
-    let box =
-    document.getElementById("sacrifice");
+    const box =
+        document.getElementById("sacrifice");
 
+    if (!box || sacrifices.length === 0) return;
 
-    if (box) {
-
-        let random =
+    const random =
         Math.floor(Math.random() * sacrifices.length);
 
-
-        box.innerHTML =
-        "🔥 " + sacrifices[random];
-
-    }
+    box.textContent =
+        `🔥 ${sacrifices[random]}`;
 
 }
-
-
 
 
 // =====================================
@@ -139,19 +157,26 @@ const challenges = [
 
 function randomChallenge() {
 
-    let box =
-    document.getElementById("challenge");
+    const box =
+        document.getElementById("challenge");
 
+    if (!box || challenges.length === 0) return;
 
-    if (box) {
-
-        let random =
+    const random =
         Math.floor(Math.random() * challenges.length);
 
-
-        box.innerHTML =
+    box.textContent =
         challenges[random];
 
-    }
-
 }
+
+
+// =====================================
+// INITIALIZATION
+// =====================================
+
+document.addEventListener("DOMContentLoaded", () => {
+
+    updateMembers();
+
+});
