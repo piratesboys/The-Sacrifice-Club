@@ -108,7 +108,32 @@ const sacrifices = [
         type: "Bishop sacrifice",
 
         speed: "Blitz"
+    },
+
+    {
+        rank: 4,
+
+        title: "The King's Destruction",
+
+        player: "Player2",
+
+        opponent: "Opponent2",
+
+        move: "Rxf7!!",
+
+        description:
+            "A fearless exchange sacrifice that completely destroys the opponent's king position.",
+
+        game:
+            "https://lichess.org/",
+
+        date: "September 2026",
+
+        type: "Rook sacrifice",
+
+        speed: "Rapid"
     }
+
 
 ];
 

@@ -32,11 +32,47 @@
                 stronger every day.
             </p>
 
-            <a class="button" href="index.html">
-                ⬅ Back to Home
-            </a>
+
+            <!-- NAVIGATION -->
+
+            <div class="navigation">
+
+                <a class="button" href="index.html">
+                    🏠 Home
+                </a>
+
+                <a class="button" href="halloffame.html">
+                    🔥 Hall of Fame
+                </a>
+
+                <a class="button" href="studies.html">
+                    📚 Chess Studies
+                </a>
+
+                <a class="button" href="members.html">
+                    👥 Members
+                </a>
+
+                <a class="button" href="tournaments.html">
+                    🏆 Tournaments
+                </a>
+
+                <a class="button" href="sacrifices.html">
+                    💥 Sacrifices of the Week
+                </a>
+
+                <a class="button" href="bots.html">
+                    🤖 Bots
+                </a>
+
+                <a class="button" href="partners.html">
+                    🤝 Partners
+                </a>
+
+            </div>
 
         </header>
+
 
 
         <!-- MEMBERS -->
@@ -84,6 +120,7 @@
         </section>
 
 
+
         <!-- MORE MEMBERS -->
 
         <section class="more-members">
@@ -93,6 +130,7 @@
             </h2>
 
         </section>
+
 
 
         <!-- FOOTER -->
@@ -124,6 +162,7 @@
     </main>
 
 
+
     <script>
 
         /*
@@ -138,7 +177,9 @@
         /*
          * Mise à jour toutes les 30 secondes
          */
+
         const UPDATE_INTERVAL = 30000;
+
 
 
         /*
@@ -257,9 +298,8 @@
 
                         const username =
                             member.username ||
-                            member.name ||
-                            member.id;
-
+                            member.id ||
+                            member.name;
 
                         if (!username) {
                             return;
@@ -285,10 +325,8 @@
                          */
 
                         card.href =
-                            "https://lichess.org/@" +
-                            encodeURIComponent(
-                                username
-                            );
+                            "https://lichess.org/@/" +
+                            encodeURIComponent(username);
 
 
                         card.target = "_blank";
@@ -459,6 +497,7 @@
         }
 
 
+
         /*
          * ==========================================
          * FIRST UPDATE
@@ -466,6 +505,7 @@
          */
 
         loadMembers();
+
 
 
         /*

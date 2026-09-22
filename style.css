@@ -140,17 +140,15 @@ li {
 
 
 /* =====================================
-   TEAM MEMBERS - ANCIENNES CARTES
+   TEAM MEMBERS
 ===================================== */
 
 .members {
     display: flex;
-
     justify-content: center;
-
-    gap: 30px;
-
+    gap: 40px;
     flex-wrap: wrap;
+    margin-top: 40px;
 }
 
 .member {
@@ -536,11 +534,17 @@ section > h3 {
 
 .navigation {
     display: flex;
+
     flex-direction: row;
+
     justify-content: center;
+
     align-items: center;
+
     gap: 12px;
+
     margin-top: 20px;
+
     flex-wrap: wrap;
 }
 
@@ -579,85 +583,60 @@ section > h3 {
 
 
 /* =====================================
-   MOBILE
+   BOTS PAGE
 ===================================== */
 
-@media (max-width: 700px) {
+.bots-section {
+    max-width: 1200px;
+    margin: 0 auto;
+}
 
-    header h1 {
-        font-size: 40px;
-    }
+.bots-section .members {
+    gap: 35px;
+}
 
-    header p {
-        font-size: 20px;
-    }
+.bots-section .member {
+    width: 260px;
 
-    section {
-        padding: 40px 20px;
-    }
+    min-height: 220px;
 
-    h2 {
-        font-size: 30px;
-    }
+    display: flex;
 
-    .button {
-        padding: 12px 25px;
-    }
+    flex-direction: column;
 
-    /* =========================
-       NAVIGATION MOBILE
-    ========================= */
+    justify-content: center;
 
-    .navigation {
-        flex-direction: column;
-        width: 100%;
-    }
+    align-items: center;
 
-    .navigation .button {
-        width: 100%;
-        max-width: 300px;
-        text-align: center;
-    }
+    background: #181818;
 
-    /* =========================
-       MEMBERS
-    ========================= */
+    border: 1px solid #333;
 
-    .members-page {
-        padding-top: 25px;
-    }
+    border-radius: 18px;
 
-    .members-header {
-        padding-bottom: 35px;
-    }
+    padding: 30px;
 
-    .members-section {
-        padding-left: 20px;
-        padding-right: 20px;
-    }
+    transition:
+        transform 0.2s ease,
+        border-color 0.2s ease,
+        box-shadow 0.2s ease;
+}
 
-    #members {
-        grid-template-columns: 1fr;
-    }
+.bots-section .member:hover {
+    transform: translateY(-6px);
 
-    .member-card {
-        padding: 13px;
-    }
+    border-color: #d4af37;
 
-    .member-avatar {
-        width: 48px;
-        height: 48px;
-        min-width: 48px;
-    }
+    box-shadow:
+        0 10px 30px rgba(0, 0, 0, 0.4);
+}
 
-    .member-name {
-        font-size: 16px;
-    }
+.bots-section .member h3 {
+    margin-bottom: 10px;
+}
 
-    #member-count {
-        font-size: 36px;
-    }
-
+.bots-section .member p {
+    color: #aaa;
 }
 
 
@@ -669,9 +648,11 @@ section > h3 {
     min-height: 60vh;
 
     display: flex;
+
     flex-direction: column;
 
     justify-content: center;
+
     align-items: center;
 
     text-align: center;
@@ -688,12 +669,13 @@ section > h3 {
         url("https://images.unsplash.com/photo-1586165368502-1bad197a6461");
 
     background-size: cover;
+
     background-position: center;
 }
 
 
 /* =====================================
-   HEADER CONTENT
+   SACRIFICES HEADER CONTENT
 ===================================== */
 
 .sacrifices-header .header-content {
@@ -702,15 +684,19 @@ section > h3 {
 
 .club-badge {
     width: 80px;
+
     height: 80px;
 
     display: flex;
+
     align-items: center;
+
     justify-content: center;
 
     margin: 0 auto 20px;
 
     border: 2px solid #d4af37;
+
     border-radius: 50%;
 
     background: rgba(212, 175, 55, 0.08);
@@ -722,7 +708,6 @@ section > h3 {
     box-shadow:
         0 0 30px rgba(212, 175, 55, 0.12);
 }
-
 
 .eyebrow {
     color: #d4af37;
@@ -737,7 +722,6 @@ section > h3 {
 
     margin-bottom: 10px !important;
 }
-
 
 .sacrifices-header h1 {
     margin: 0 0 20px;
@@ -754,13 +738,11 @@ section > h3 {
         0 5px 25px rgba(0, 0, 0, 0.7);
 }
 
-
 .sacrifices-header h1 span {
     display: block;
 
     color: white;
 }
-
 
 .header-description {
     max-width: 700px;
@@ -774,7 +756,8 @@ section > h3 {
 
 
 /* =====================================
-   NAVIGATION
+   SACRIFICES NAVIGATION
+   SAME GOLD STYLE AS MAIN SITE
 ===================================== */
 
 .sacrifices-header .navigation {
@@ -788,55 +771,40 @@ section > h3 {
 
     flex-wrap: wrap;
 
-    gap: 10px;
+    gap: 12px;
 }
-
 
 .sacrifices-header .navigation .button {
     margin: 0;
 
-    padding: 12px 20px;
+    padding: 15px 35px;
 
-    background: rgba(212, 175, 55, 0.10);
+    background: #d4af37;
 
-    border: 1px solid rgba(212, 175, 55, 0.45);
+    border: none;
 
-    color: #eee;
+    color: black;
 
     border-radius: 10px;
 
-    backdrop-filter: blur(8px);
+    font-weight: bold;
 
-    transition:
-        transform 0.2s ease,
-        background 0.2s ease,
-        border-color 0.2s ease,
-        color 0.2s ease;
+    text-decoration: none;
+
+    transition: 0.2s;
 }
-
 
 .sacrifices-header .navigation .button:hover {
-    transform: translateY(-3px);
+    background: white;
 
-    background: #d4af37;
+    color: black;
 
-    border-color: #d4af37;
-
-    color: #080808;
-}
-
-
-.sacrifices-header .navigation .button.active {
-    background: #d4af37;
-
-    border-color: #d4af37;
-
-    color: #080808;
+    transform: translateY(-2px);
 }
 
 
 /* =====================================
-   MAIN PAGE
+   SACRIFICES MAIN PAGE
 ===================================== */
 
 .sacrifices-page {
@@ -848,6 +816,10 @@ section > h3 {
 }
 
 
+/* =====================================
+   SECTION HEADING
+===================================== */
+
 .section-heading {
     max-width: 800px;
 
@@ -855,7 +827,6 @@ section > h3 {
 
     text-align: center;
 }
-
 
 .section-label {
     margin-bottom: 10px;
@@ -871,13 +842,11 @@ section > h3 {
     text-transform: uppercase;
 }
 
-
 .section-heading h2 {
     margin-bottom: 15px;
 
     font-size: clamp(32px, 5vw, 48px);
 }
-
 
 .sacrifices-intro {
     max-width: 700px;
@@ -942,12 +911,6 @@ section > h3 {
         box-shadow 0.25s ease;
 }
 
-
-/* IMPORTANT:
-   Hover effect was previously applied
-   permanently to every card.
-*/
-
 .sacrifice-card:hover {
     transform: translateY(-7px);
 
@@ -960,7 +923,7 @@ section > h3 {
 
 
 /* =====================================
-   CARD RANK
+   SACRIFICE CARD RANK
 ===================================== */
 
 .sacrifice-rank {
@@ -992,7 +955,7 @@ section > h3 {
 
 
 /* =====================================
-   CARD CONTENT
+   SACRIFICE CARD CONTENT
 ===================================== */
 
 .sacrifice-content {
@@ -1000,7 +963,6 @@ section > h3 {
 
     padding: 30px;
 }
-
 
 .sacrifice-title {
     display: flex;
@@ -1012,11 +974,9 @@ section > h3 {
     margin-bottom: 8px;
 }
 
-
 .sacrifice-title span {
     font-size: 24px;
 }
-
 
 .sacrifice-title h3 {
     margin: 0;
@@ -1026,7 +986,6 @@ section > h3 {
     font-size: 24px;
 }
 
-
 .sacrifice-players {
     margin-bottom: 18px;
 
@@ -1034,7 +993,6 @@ section > h3 {
 
     font-size: 14px;
 }
-
 
 .sacrifice-players strong {
     color: #eee;
@@ -1074,7 +1032,7 @@ section > h3 {
 
 
 /* =====================================
-   DESCRIPTION
+   SACRIFICE DESCRIPTION
 ===================================== */
 
 .sacrifice-description {
@@ -1089,7 +1047,7 @@ section > h3 {
 
 
 /* =====================================
-   INFO TAGS
+   SACRIFICE INFO TAGS
 ===================================== */
 
 .sacrifice-info {
@@ -1101,7 +1059,6 @@ section > h3 {
 
     margin-top: 20px;
 }
-
 
 .sacrifice-info span {
     padding: 6px 10px;
@@ -1135,7 +1092,6 @@ section > h3 {
 
     color: #999;
 }
-
 
 .loading-card:hover {
     transform: none;
@@ -1178,13 +1134,11 @@ section > h3 {
     border-radius: 22px;
 }
 
-
 .sacrifice-cta h2 {
     margin-bottom: 10px;
 
     font-size: 30px;
 }
-
 
 .sacrifice-cta p {
     max-width: 650px;
@@ -1195,14 +1149,20 @@ section > h3 {
 }
 
 
+/* =====================================
+   SACRIFICE CTA BUTTON
+===================================== */
+
 .cta-button {
     flex-shrink: 0;
 
-    padding: 15px 25px;
+    display: inline-block;
+
+    padding: 15px 35px;
 
     background: #d4af37;
 
-    color: #080808;
+    color: black;
 
     text-decoration: none;
 
@@ -1210,27 +1170,25 @@ section > h3 {
 
     font-weight: bold;
 
-    transition:
-        transform 0.2s ease,
-        background 0.2s ease;
+    transition: 0.2s;
 }
 
-
 .cta-button:hover {
-    transform: translateY(-3px);
-
     background: white;
+
+    color: black;
+
+    transform: translateY(-2px);
 }
 
 
 /* =====================================
-   FOOTER
+   SACRIFICES FOOTER
 ===================================== */
 
 .sacrifices-page + footer {
     border-top: 1px solid #181818;
 }
-
 
 .footer-symbol {
     margin-bottom: 10px;
@@ -1240,11 +1198,9 @@ section > h3 {
     font-size: 40px;
 }
 
-
 footer h2 {
     margin-bottom: 10px;
 }
-
 
 .footer-small {
     color: #555;
@@ -1259,6 +1215,87 @@ footer h2 {
 
 @media (max-width: 700px) {
 
+    header h1 {
+        font-size: 40px;
+    }
+
+    header p {
+        font-size: 20px;
+    }
+
+    section {
+        padding: 40px 20px;
+    }
+
+    h2 {
+        font-size: 30px;
+    }
+
+    .button {
+        padding: 12px 25px;
+    }
+
+
+    /* NAVIGATION */
+
+    .navigation {
+        flex-direction: column;
+
+        width: 100%;
+    }
+
+    .navigation .button {
+        width: 100%;
+
+        max-width: 300px;
+
+        text-align: center;
+    }
+
+
+    /* MEMBERS */
+
+    .members-page {
+        padding-top: 25px;
+    }
+
+    .members-header {
+        padding-bottom: 35px;
+    }
+
+    .members-section {
+        padding-left: 20px;
+
+        padding-right: 20px;
+    }
+
+    #members {
+        grid-template-columns: 1fr;
+    }
+
+    .member-card {
+        padding: 13px;
+    }
+
+    .member-avatar {
+        width: 48px;
+
+        height: 48px;
+
+        min-width: 48px;
+    }
+
+    .member-name {
+        font-size: 16px;
+    }
+
+    #member-count {
+        font-size: 36px;
+    }
+
+
+    /* SACRIFICES HEADER */
+
     .sacrifices-header {
         min-height: auto;
 
@@ -1268,14 +1305,13 @@ footer h2 {
             45px;
     }
 
-
     .club-badge {
         width: 65px;
+
         height: 65px;
 
         font-size: 34px;
     }
-
 
     .sacrifices-header h1 {
         font-size: 40px;
@@ -1283,18 +1319,18 @@ footer h2 {
         letter-spacing: 1px;
     }
 
-
     .header-description {
         font-size: 17px !important;
     }
 
+
+    /* SACRIFICES NAVIGATION */
 
     .sacrifices-header .navigation {
         width: 100%;
 
         flex-direction: column;
     }
-
 
     .sacrifices-header .navigation .button {
         width: 100%;
@@ -1305,22 +1341,24 @@ footer h2 {
     }
 
 
+    /* SACRIFICES PAGE */
+
     .sacrifices-page {
         padding:
             60px
             18px;
     }
 
-
     #sacrifices {
         grid-template-columns: 1fr;
     }
 
 
+    /* SACRIFICE CARD */
+
     .sacrifice-card {
         flex-direction: column;
     }
-
 
     .sacrifice-rank {
         width: 100%;
@@ -1336,26 +1374,24 @@ footer h2 {
         font-size: 25px;
     }
 
-
     .sacrifice-content {
         padding: 23px;
     }
-
 
     .sacrifice-title h3 {
         font-size: 20px;
     }
 
-
     .sacrifice-move {
         font-size: 22px;
     }
-
 
     .sacrifice-info {
         flex-direction: column;
     }
 
+
+    /* CTA */
 
     .sacrifice-cta {
         flex-direction: column;
@@ -1366,7 +1402,6 @@ footer h2 {
 
         margin-top: 55px;
     }
-
 
     .cta-button {
         width: 100%;
