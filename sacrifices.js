@@ -39,25 +39,25 @@ const sacrifices = [
     {
         rank: 1,
 
-        title: "coming soon...",
+        title: "double bishop sacrifice",
 
-        player: "...",
+        player: ".Piratesboy",
 
-        opponent: "...",
+        opponent: "NM SLOM",
 
-        move: "...",
+        move: "bishop sacrifice",
 
         description:
-            "...",
+            "a double bishop sacrifice",
 
         game:
-            "...",
+            "https://lichess.org/8ZdPXvpGblxQ",
 
-        date: "...",
+        date: "20/09/2026",
 
-        type: "...",
+        type: "friendly",
 
-        speed: "..."
+        speed: "rapid"
     },
 
 
