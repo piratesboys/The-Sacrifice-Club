@@ -18,6 +18,180 @@ body {
     background: #0b0b0b;
     color: white;
     line-height: 1.7;
+
+    /* Space for fixed navbar */
+    padding-top: 70px;
+}
+
+
+/* =====================================
+   TOP NAVIGATION
+===================================== */
+
+.top-nav {
+    position: fixed;
+
+    top: 0;
+    left: 0;
+
+    width: 100%;
+    height: 70px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 0 6%;
+
+    background: rgba(5, 5, 5, 0.95);
+
+    border-bottom: 1px solid rgba(212, 175, 55, 0.15);
+
+    backdrop-filter: blur(14px);
+
+    z-index: 1000;
+}
+
+
+/* =====================================
+   NAVBAR LOGO
+===================================== */
+
+.top-nav .logo {
+    display: flex;
+
+    align-items: center;
+
+    gap: 10px;
+
+    color: white;
+
+    text-decoration: none;
+
+    font-size: 16px;
+
+    font-weight: bold;
+
+    letter-spacing: 1px;
+
+    white-space: nowrap;
+}
+
+.top-nav .logo span {
+    color: #d4af37;
+    font-size: 25px;
+}
+
+
+/* =====================================
+   NAVBAR LINKS
+===================================== */
+
+.top-nav-links {
+    display: flex;
+
+    align-items: center;
+
+    gap: 5px;
+
+    list-style: none;
+}
+
+.top-nav-links a {
+    position: relative;
+
+    display: inline-block;
+
+    padding: 9px 14px;
+
+    color: #999;
+
+    text-decoration: none;
+
+    font-size: 14px;
+
+    font-weight: 600;
+
+    border-radius: 8px;
+
+    transition:
+        color 0.2s ease,
+        background 0.2s ease;
+}
+
+.top-nav-links a:hover {
+    color: white;
+
+    background: rgba(255, 255, 255, 0.06);
+}
+
+
+/* =====================================
+   ACTIVE NAVIGATION
+===================================== */
+
+.top-nav-links a.active {
+    color: #d4af37;
+
+    background: rgba(212, 175, 55, 0.08);
+}
+
+.top-nav-links a.active::after {
+    content: "";
+
+    position: absolute;
+
+    left: 50%;
+    bottom: 3px;
+
+    width: 18px;
+    height: 2px;
+
+    transform: translateX(-50%);
+
+    background: #d4af37;
+
+    border-radius: 10px;
+}
+
+
+/* =====================================
+   NAVBAR ACTION BUTTON
+===================================== */
+
+.top-nav .nav-action {
+    margin-left: 8px;
+
+    padding: 9px 17px;
+
+    background: #d4af37;
+
+    color: #050505;
+
+    border-radius: 8px;
+
+    text-decoration: none;
+
+    font-size: 14px;
+
+    font-weight: bold;
+
+    transition:
+        transform 0.2s ease,
+        background 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+.top-nav .nav-action:hover {
+    background: white;
+
+    color: black;
+
+    transform: translateY(-2px);
+
+    box-shadow:
+        0 5px 20px rgba(212, 175, 55, 0.2);
 }
 
 
@@ -29,9 +203,11 @@ header {
     min-height: 70vh;
 
     display: flex;
+
     flex-direction: column;
 
     justify-content: center;
+
     align-items: center;
 
     text-align: center;
@@ -46,17 +222,21 @@ header {
         url("https://images.unsplash.com/photo-1560174038-da43ac74f01b");
 
     background-size: cover;
+
     background-position: center;
 }
 
 header h1 {
     font-size: 65px;
+
     color: #d4af37;
+
     margin-bottom: 20px;
 }
 
 header p {
     font-size: 25px;
+
     max-width: 700px;
 }
 
@@ -73,6 +253,7 @@ header p {
     padding: 15px 35px;
 
     background: #d4af37;
+
     color: black;
 
     text-decoration: none;
@@ -86,6 +267,7 @@ header p {
 
 .button:hover {
     background: white;
+
     transform: translateY(-2px);
 }
 
@@ -96,12 +278,15 @@ header p {
 
 section {
     padding: 70px 15%;
+
     text-align: center;
 }
 
 h2 {
     color: #d4af37;
+
     font-size: 38px;
+
     margin-bottom: 25px;
 }
 
@@ -135,6 +320,7 @@ ul {
 
 li {
     margin: 15px;
+
     font-size: 20px;
 }
 
@@ -145,9 +331,13 @@ li {
 
 .members {
     display: flex;
+
     justify-content: center;
+
     gap: 40px;
+
     flex-wrap: wrap;
+
     margin-top: 40px;
 }
 
@@ -529,7 +719,7 @@ section > h3 {
 
 
 /* =====================================
-   NAVIGATION
+   OLD NAVIGATION
 ===================================== */
 
 .navigation {
@@ -588,6 +778,7 @@ section > h3 {
 
 .bots-section {
     max-width: 1200px;
+
     margin: 0 auto;
 }
 
@@ -757,7 +948,6 @@ section > h3 {
 
 /* =====================================
    SACRIFICES NAVIGATION
-   SAME GOLD STYLE AS MAIN SITE
 ===================================== */
 
 .sacrifices-header .navigation {
@@ -1134,20 +1324,6 @@ section > h3 {
     border-radius: 22px;
 }
 
-.sacrifice-cta h2 {
-    margin-bottom: 10px;
-
-    font-size: 30px;
-}
-
-.sacrifice-cta p {
-    max-width: 650px;
-
-    margin-bottom: 0;
-
-    color: #999;
-}
-
 
 /* =====================================
    SACRIFICE CTA BUTTON
@@ -1214,6 +1390,56 @@ footer h2 {
 ===================================== */
 
 @media (max-width: 700px) {
+
+    body {
+        padding-top: 65px;
+    }
+
+
+    /* NAVBAR */
+
+    .top-nav {
+        height: auto;
+
+        min-height: 65px;
+
+        padding: 10px 20px;
+
+        flex-wrap: wrap;
+
+        gap: 8px;
+    }
+
+    .top-nav .logo {
+        font-size: 14px;
+    }
+
+    .top-nav-links {
+        width: 100%;
+
+        justify-content: center;
+
+        overflow-x: auto;
+
+        padding-bottom: 3px;
+
+        gap: 2px;
+    }
+
+    .top-nav-links a {
+        padding: 8px 10px;
+
+        font-size: 13px;
+
+        white-space: nowrap;
+    }
+
+    .top-nav .nav-action {
+        display: none;
+    }
+
+
+    /* HEADER */
 
     header h1 {
         font-size: 40px;
@@ -1408,5 +1634,4 @@ footer h2 {
 
         text-align: center;
     }
-
 }
